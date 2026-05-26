@@ -28,3 +28,5 @@ results = collection.query(
 print("Top 3 most relevant chunks:\n")
 for i, doc in enumerate(results["documents"][0]):
     print(f"Result {i+1}: {doc}")
+
+print(collection)
