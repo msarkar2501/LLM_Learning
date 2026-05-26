@@ -29,6 +29,6 @@ while True:
 
     print(f"\n[Messages in history: {len(messages)}]\n")
     
-    messages.append({"role": "assistant", "content": reply})
+    messages.append({"role": "assistant", "content": reply}) # to remember the chat
 
     print(f"AI BOT: {reply}")
