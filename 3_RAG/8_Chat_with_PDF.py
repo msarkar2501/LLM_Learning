@@ -22,7 +22,7 @@ def load_pdf(filepath):
 sample_text = load_pdf("artificial_intelligence_history.pdf")
 
 # Define chunks
-def chunk_text(text, chunk_size = 300, overlap = 50):
+def chunk_text(text, chunk_size = 800, overlap = 100):
     chunks = []
     start = 0
 
@@ -34,7 +34,7 @@ def chunk_text(text, chunk_size = 300, overlap = 50):
 
     return chunks
 
-chunks = chunk_text(sample_text, chunk_size = 300, overlap = 50)
+chunks = chunk_text(sample_text, chunk_size = 800, overlap = 100)
 
 # indexing
 ids = [f"chunk_{i}" for i in range(len(chunks))]
@@ -76,7 +76,8 @@ while True:
                 {"role": "user", "content":f"\nContext: {context}\n\nQuestion: {user_question}\n"}
             ]
         )
+        print(f"AI: {response.choices[0].message.content}\n")
 
-    print(f"AI: {response.choices[0].message.content}\n")
+    
 
 
