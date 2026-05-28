@@ -12,6 +12,15 @@ def multiply(a, b):
 def add(a, b):
     return a + b
 
+def subtract(a, b):
+    return a - b
+
+def divide(a, b):
+    return a / b
+
+def calculate(expression):
+    return eval(expression)
+
 def get_coordinates(city):
     url = f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1"
     response = requests.get(url)
@@ -37,30 +46,14 @@ tools = [
     {
         "type": "function",
         "function": {
-            "name": "multiply",
-            "description": "Multiplies two numbers together",
+            "name": "calculate",
+            "description": "Evaluates a maths expression string. Use Python syntax e.g. '32 * 9/5 + 32'",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "a": {"type": "number", "description": "First number"},
-                    "b": {"type": "number", "description": "Second number"}
+                    "expression": {"type": "string", "description": "Maths expression to evaluate e.g. '15 * 0.85'"}
                 },
-                "required": ["a", "b"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "add",
-            "description": "Adds two numbers together",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "a": {"type": "number", "description": "First number"},
-                    "b": {"type": "number", "description": "Second number"}
-                },
-                "required": ["a", "b"]
+                "required": ["expression"]
             }
         }
     },
@@ -126,12 +119,9 @@ while True:
                     tool_name = tool_call.function.name
                     tool_args = json.loads(tool_call.function.arguments)
                 
-                    if tool_name == "multiply":
-                        result = multiply(tool_args["a"], tool_args["b"])
-                        print(f"[Ran {tool_name} with {tool_args} → {result}]\n")
-                    elif tool_name == "add":
-                        result = add(tool_args["a"], tool_args["b"])
-                        print(f"[Ran {tool_name} with {tool_args} → {result}]\n")
+                    if tool_name == "calculate":
+                        result = calculate(tool_args["expression"])
+                        print(f"[Calculated: {tool_args['expression']} → {result}]\n")
                     elif tool_name == "get_coordinates":
                         lat, lon = get_coordinates(tool_args["city"])
                         result = f"latitude: {lat}, longitude: {lon}"
