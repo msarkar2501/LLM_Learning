@@ -99,6 +99,21 @@ The agent automatically chains tools when needed. For the Tokyo question it call
 
 ---
 
+## Chapter 5 — More Capable Agents
+
+Applied better tools for the agent to use. Using tools like Web Search, wikipedia to make the agent more robust. Put error handling capabilities for the agent to handle errors gracefully, instead of failing silently.
+
+| File | What it does |
+|---|---|
+| `1_web_search_for_LLMs.py` | How the web search request works |
+| `2_agent_plus_web_search.py` | Incorporate web search into the LLM |
+| `3_wikipedia_search.py` | Try the Wikipedia Rest API search |
+| `4_agent_plus_wikipedia.py` | Integrate Wikipedia into the agent |
+| `5_error_handling.py` | Using try/except for error handling |
+| `6_mini_project.py` | Full agent with focused identity and consistent behaviour |
+
+Key things learned in this chapter: even without try/except, a capable model like qwen3-32b will often respond gracefully to bad input - but without error handling, Python itself crashes before the LLM ever sees the result. Tool descriptions are as important as the tool code since they are the instructions the LLM uses to decide when and how to call each tool. A focused system prompt is what gives an agent a consistent identity and behaviour.
+
 ## Setup
 
 1. Clone the repo
