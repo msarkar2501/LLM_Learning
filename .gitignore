@@ -17,3 +17,7 @@ env/
 
 # Mac
 .DS_Store
+
+# DB vectors
+chroma_db/
+chromadb_text/
