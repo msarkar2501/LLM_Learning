@@ -21,3 +21,7 @@ env/
 # DB vectors
 chroma_db/
 chromadb_text/
+chromadb_context/
+
+# documents
+documents/

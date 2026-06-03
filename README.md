@@ -133,4 +133,4 @@ GROQ_API_KEY=your_key_here
 
 I'm two months into a self-taught AI learning journey trying to get into an LLM-related role. The goal is to actually understand how these things work, not just call library functions. Every file in this repo was typed out by hand and run.
 
-Still going. Next up: more complex agents, then portfolio projects.
+Still going.
