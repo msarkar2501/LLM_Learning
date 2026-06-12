@@ -93,8 +93,6 @@ def main():
     paths = folder_parser("documents")
     add_chunk(paths)
 
-main()
-
 """
 The documents folders contains a publications on Physics Informed Neural Network models and their uses in current research.
 """

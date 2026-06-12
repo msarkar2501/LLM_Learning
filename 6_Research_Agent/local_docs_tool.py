@@ -47,7 +47,7 @@ def query_collection(user_question):
     for chunk, meta, id in zip(chunks, metadatas, ids):
         source = id.rsplit("_chunk_", 1)[0]
         output += f"Source: {source}\n{chunk}\n\n"
-        if meta.get("orphaned", False):
+        if meta and meta.get("orphaned", False):
             output += f"\n⚠️ This content is from '{source}' which no longer exists in your documents folder"
     
     return output

@@ -25,3 +25,6 @@ chromadb_context/
 
 # documents
 documents/
+
+#json files
+.json
