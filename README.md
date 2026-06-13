@@ -28,7 +28,7 @@ Getting comfortable with the Groq API before doing anything fancy.
 | `2_Multi_turn_conv.py` | Multi-turn conversation by manually maintaining a messages list |
 | `3_chatbot_loop.py` | Interactive chatbot in a loop with full conversation memory |
 
-The main thing that clicked here: the LLM has no memory on its own. You have to send the entire conversation history every single time. That's all the `messages` list is doing.
+The main thing that clicked here: the LLM has no memory on its own. You have to send the entire conversation history every single time.
 
 ---
 
@@ -114,6 +114,22 @@ Applied better tools for the agent to use. Using tools like Web Search, wikipedi
 
 Key things learned in this chapter: even without try/except, a capable model like qwen3-32b will often respond gracefully to bad input - but without error handling, Python itself crashes before the LLM ever sees the result. Tool descriptions are as important as the tool code since they are the instructions the LLM uses to decide when and how to call each tool. A focused system prompt is what gives an agent a consistent identity and behaviour.
 
+---
+
+## Chapter 6 — Research Agent
+
+Combines RAG and agents into a single system. The agent decides whether to search local documents, Wikipedia, or the web — and can use all three in one response.
+
+| File | What it does |
+|---|---|
+| `document_loader.py` | Loads PDFs from a folder, chunks them, and indexes into ChromaDB. Handles orphaned documents (files deleted after indexing) |
+| `local_docs_tool.py` | Definition of tools |
+| `full_agent.py` | Full research agent loop with persistent memory, context window trimming, and structured briefing output |
+
+Key things learned in this chapter: the model and the retrieval system need to work together — tool descriptions are what tell the LLM when to query local docs versus going to the web. Persistent memory across sessions means the agent remembers past conversations, but also means stale context can cause the model to stop calling tools. Orphaned document handling taught that silent failures are worse than explicit warnings — better to flag bad data than return it without comment.
+
+---
+
 ## Setup
 
 1. Clone the repo
@@ -131,6 +147,6 @@ GROQ_API_KEY=your_key_here
 
 ## Why I'm doing this
 
-I'm two months into a self-taught AI learning journey trying to get into an LLM-related role. The goal is to actually understand how these things work, not just call library functions. Every file in this repo was typed out by hand and run.
+I'm two months into a self-taught AI learning journey. Been using LLMs like ChatGPT, Claude, Gemini etc. without knowing what's under the hood. Now I'll be able to understand and implement it myself. 
 
 Still going.
