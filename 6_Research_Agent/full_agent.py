@@ -30,7 +30,7 @@ When given any topic, you always:
 4. Synthesise everything into a structured briefing with exactly these four sections:
 
 FROM YOUR DOCUMENTS
-All texts extracted from local documents. Only show this if local docs returned something relevant.
+All texts extracted from local documents.
 
 BACKGROUND
 A clear summary of what this topic is, based on Wikipedia.
@@ -80,8 +80,10 @@ while True:
                 model = "qwen/qwen3-32b",
                 messages = messages,
                 tools = tools,
-                max_tokens = 1024
+                max_tokens = 2048
             )
+            usage = response.usage
+            print(f"[Tokens — prompt: {usage.prompt_tokens}, completion: {usage.completion_tokens}, total: {usage.total_tokens}]\n")
 
             reply = response.choices[0].message
 

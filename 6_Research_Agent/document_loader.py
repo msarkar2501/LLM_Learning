@@ -75,7 +75,7 @@ def handle_orphaned(folder_path):
         if deleted_file.endswith(".pdf"):
             print(f"\n{deleted_file} does not exist in the current documents folder\n")
             print("but exists in the ChromaDB database.\n")
-            user_input = input("Would you like to delete it or keep it? (y/n): ")
+            user_input = input("Would you like to delete it or keep it? (y = del / n = keep): ")
             file_ids = [id for id in chunk_id if id.startswith(deleted_file)]
             if user_input.lower() == "y":
                 collection.delete(ids = file_ids)
