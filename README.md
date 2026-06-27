@@ -125,6 +125,7 @@ Combines RAG and agents into a single system. The agent decides whether to searc
 | `document_loader.py` | Loads PDFs from a folder, chunks them, and indexes into ChromaDB. Handles orphaned documents (files deleted after indexing) |
 | `local_docs_tool.py` | Definition of tools |
 | `full_agent.py` | Full research agent loop with persistent memory, context window trimming, and structured briefing output |
+| `eval.ipynb` | Check whether correct context is extracted and judge whether context follows user prompt |
 
 Key things learned in this chapter: the model and the retrieval system need to work together — tool descriptions are what tell the LLM when to query local docs versus going to the web. Persistent memory across sessions means the agent remembers past conversations, but also means stale context can cause the model to stop calling tools. Orphaned document handling taught that silent failures are worse than explicit warnings — better to flag bad data than return it without comment.
 
